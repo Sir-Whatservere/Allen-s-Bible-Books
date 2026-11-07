@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PeopleInBIbleScene.unity
     guid: eb11a5a26b05d5b4786155a9eb9340d5
+  - enabled: 1
+    path: Assets/Scenes/BibleBooksScene 1.unity
+    guid: a3fff81d401563d4cb4ca98e63550e76
   m_configObjects: {}

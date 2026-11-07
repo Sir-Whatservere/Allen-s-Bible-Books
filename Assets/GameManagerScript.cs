@@ -97,6 +97,7 @@ public class GameManagerScript : MonoBehaviour
     public GameObject[] answerButtons;
     public GameObject SetRangeObject;
     public WithScreenScaler WithScreenScalerObject;
+    public bool landscapeMode = true;
 
     void pickBooksForQuestion()
     {
@@ -152,10 +153,10 @@ public class GameManagerScript : MonoBehaviour
     }
     private Dictionary<int, Vector2> buttonPositions = new Dictionary<int, Vector2> 
     {
-        { 1, new Vector2(0, 0) },
-        { 2, new Vector2(0, 0) },
-        { 3, new Vector2(0, 0) },
-        { 4, new Vector2(0, 0) }
+        { 1, new Vector2(-325, -540) },
+        { 2, new Vector2(-325, -840) },
+        { 3, new Vector2(325, -540) },
+        { 4, new Vector2(325, -840) }
     };
     private Dictionary<int, bool> buttonPositionsOccupied = new Dictionary<int, bool>
     {
@@ -184,7 +185,7 @@ public class GameManagerScript : MonoBehaviour
                 randomPosition = Random.Range(1, 5);
             }
             // if not occupied, move button to position and mark position as occupied
-            button.transform.localPosition = buttonPositions[randomPosition];
+            button.transform.GetComponent<RectTransform>().anchoredPosition = buttonPositions[randomPosition];
             Debug.Log(answerButtons[i] + " moved to position " + buttonPositions[randomPosition]);
             buttonPositionsOccupied[randomPosition] = true;
         }
@@ -203,10 +204,13 @@ public class GameManagerScript : MonoBehaviour
     }
     public void setupGame()
     {
-        buttonPositions[1] = WithScreenScalerObject.buttonPos1;
-        buttonPositions[2] = WithScreenScalerObject.buttonPos2;
-        buttonPositions[3] = WithScreenScalerObject.buttonPos3;
-        buttonPositions[4] = WithScreenScalerObject.buttonPos4;
+        if (!landscapeMode)
+        {
+            buttonPositions[1] = new Vector2(-220, -900);
+            buttonPositions[2] = new Vector2(-220, -1500);
+            buttonPositions[3] = new Vector2(220, -900);
+            buttonPositions[4] = new Vector2(220, -1500);
+        }
         answerButtons = new GameObject[] { correctAnswerButton, wrongButton1, wrongButton2, wrongButton3 };
         clearQuestion();
         pickBooksForQuestion();
