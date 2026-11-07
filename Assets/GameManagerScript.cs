@@ -186,7 +186,7 @@ public class GameManagerScript : MonoBehaviour
             }
             // if not occupied, move button to position and mark position as occupied
             button.transform.GetComponent<RectTransform>().anchoredPosition = buttonPositions[randomPosition];
-            Debug.Log(answerButtons[i] + " moved to position " + buttonPositions[randomPosition]);
+            //Debug.Log(answerButtons[i] + " moved to position " + buttonPositions[randomPosition]);
             buttonPositionsOccupied[randomPosition] = true;
         }
     }

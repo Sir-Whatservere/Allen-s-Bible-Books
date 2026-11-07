@@ -14,14 +14,17 @@ public class DetectScreenMode : MonoBehaviour
 
     void Update()
     {
-        if (IsPortrait() && !currentlyPortrait)
+        DeviceOrientation device = Input.deviceOrientation;
+        //(IsPortrait() && !currentlyPortrait) || 
+        if ((device == DeviceOrientation.Portrait || device == DeviceOrientation.PortraitUpsideDown) && !currentlyPortrait)
         {
             DetectScreenMode.currentlyPortrait = true;
             // load the portrait scene
             SceneManager.LoadScene(2);
             Debug.Log("The screen layout is Portrait.");
         }
-        else if (!IsPortrait() && currentlyPortrait)
+        //(!IsPortrait() && currentlyPortrait) || 
+        else if (((device == DeviceOrientation.LandscapeLeft || device == DeviceOrientation.LandscapeRight) && currentlyPortrait))
         {
             DetectScreenMode.currentlyPortrait = false;
             // load the landscape scene
