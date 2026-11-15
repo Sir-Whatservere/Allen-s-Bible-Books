@@ -239,4 +239,5 @@ public class GameManagerScript : MonoBehaviour
             wrongButton3.GetComponent<Button>().interactable = false;
         }
     }
+
 }
