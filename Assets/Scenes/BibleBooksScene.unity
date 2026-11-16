@@ -1744,6 +1744,7 @@ GameObject:
   - component: {fileID: 507612120}
   - component: {fileID: 507612119}
   - component: {fileID: 507612123}
+  - component: {fileID: 507612124}
   m_Layer: 5
   m_Name: SettingsParent
   m_TagString: Untagged
@@ -1801,10 +1802,10 @@ RectTransform:
   m_Father: {fileID: 586759580}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &507612123
 MonoBehaviour:
@@ -1824,6 +1825,20 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 9ed765b1a063eae408e7a3f5f55f8894, type: 3}
   - {fileID: 2800000, guid: 1873f69c395c55849a4be2a704dd1e61, type: 3}
   BackgroundRawImage: {fileID: 507612119}
+--- !u!114 &507612124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507612118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 4
+  m_AspectRatio: 1.7777778
 --- !u!1 &509501049
 GameObject:
   m_ObjectHideFlags: 0
