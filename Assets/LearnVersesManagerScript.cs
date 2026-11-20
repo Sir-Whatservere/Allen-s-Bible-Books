@@ -7,6 +7,7 @@ using static LearnVersesManagerScript;
 
 public class LearnVersesManagerScript : MonoBehaviour
 {
+    public verseAndBank publicUseVerseAndBank = new verseAndBank(null, null, null);
     public static verseAndBank SetupVerse(int numberOfBlanks, int verseIndex, String[] verses, verseAndBank verseAndBank_toReturn)
     {
         // split string into string[] of words
@@ -82,16 +83,13 @@ public class LearnVersesManagerScript : MonoBehaviour
             this.indexOrders = indexOrders;
         }
     }
-    public static void runVersesLearner()
+    public void runVersesLearner(int numberOfBlanks)
     {
-        verseAndBank e = new verseAndBank(null, null, null);
-        // commas and colons are connected to previous  word
         String[] verses = { "Thy word is a lamp unto my feet and a light unto my path", "Rest in the LORD, and wait patiently for him: fret not thyself because of him who prospereth in his way, because of the man who bringeth wicked devices to pass." };
-        verseAndBank readyVerse = SetupVerse(3, 0, verses, e);
-        Debug.Log($"[{string.Join(", ", readyVerse.verseAndBlanks)}]");
-        Debug.Log($"[{string.Join(", ", readyVerse.wordBank)}]");
-        Debug.Log($"[{string.Join(", ", readyVerse.indexOrders)}]");
-
-
+        // number of blanks, index for verse from array of all verses..., reference to array with all verses, preconcieved verseAndBank
+        SetupVerse(numberOfBlanks, 0, verses, publicUseVerseAndBank);
+        Debug.Log($"[{string.Join(", ", publicUseVerseAndBank.verseAndBlanks)}]");
+        Debug.Log($"[{string.Join(", ", publicUseVerseAndBank.wordBank)}]");
+        Debug.Log($"[{string.Join(", ", publicUseVerseAndBank.indexOrders)}]");
     }
 }
