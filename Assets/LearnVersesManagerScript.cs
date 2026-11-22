@@ -85,7 +85,7 @@ public class LearnVersesManagerScript : MonoBehaviour
     }
     public void runVersesLearner(int numberOfBlanks)
     {
-        String[] verses = { "Thy word is a lamp unto my feet and a light unto my path", "Rest in the LORD, and wait patiently for him: fret not thyself because of him who prospereth in his way, because of the man who bringeth wicked devices to pass." };
+        String[] verses = {"Thy word is a lamp unto my feet and a light unto my path", "Rest in the LORD, and wait patiently for him: fret not thyself because of him who prospereth in his way, because of the man who bringeth wicked devices to pass." };
         // number of blanks, index for verse from array of all verses..., reference to array with all verses, preconcieved verseAndBank
         SetupVerse(numberOfBlanks, 0, verses, publicUseVerseAndBank);
         Debug.Log($"[{string.Join(", ", publicUseVerseAndBank.verseAndBlanks)}]");
