@@ -14,19 +14,6 @@ public class instantiatorScript : MonoBehaviour
 
     public int[] sortedIndexOrders;
     public string[] modifiableMainVerse;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public class verseAndBank
     {
         public String[] verseAndBlanks;
@@ -72,9 +59,14 @@ public class instantiatorScript : MonoBehaviour
         mainVerseAndBlanksText.text = textToUse;
     }
 
-    public void setUpLearnVerses(int numberOfBlanks)
+    public void setUpLearnVerses()
     {
-        learnVersesManager.GetComponent<LearnVersesManagerScript>().runVersesLearner(numberOfBlanks);
+        // find a way to assign these values from other input
+        int numberOfBlanks = 3;
+        string book = "Psalms";
+        int chapter = 37;
+        int verseNum = 7;
+        learnVersesManager.GetComponent<LearnVersesManagerScript>().runVersesLearner(numberOfBlanks, book, chapter, verseNum);
         setupWordBankButtons();
         setupMainVerseText();
     }

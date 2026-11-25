@@ -7,11 +7,12 @@ using static LearnVersesManagerScript;
 
 public class LearnVersesManagerScript : MonoBehaviour
 {
+    public BibleManager bibleManager;
     public verseAndBank publicUseVerseAndBank = new verseAndBank(null, null, null);
-    public static verseAndBank SetupVerse(int numberOfBlanks, int verseIndex, String[] verses, verseAndBank verseAndBank_toReturn)
+    public static verseAndBank SetupVerse(int numberOfBlanks, int verseIndex, String verse, verseAndBank verseAndBank_toReturn)
     {
         // split string into string[] of words
-        String[] splitVerse = verses[verseIndex].Split(" ");
+        String[] splitVerse = verse.Split(" ");
         if (numberOfBlanks > splitVerse.Length)
         {
             Debug.Log("Number of blanks exceeds verse length.");
@@ -83,11 +84,11 @@ public class LearnVersesManagerScript : MonoBehaviour
             this.indexOrders = indexOrders;
         }
     }
-    public void runVersesLearner(int numberOfBlanks)
+    public void runVersesLearner(int numberOfBlanks, string book, int chapter, int verseNum)
     {
-        String[] verses = {"Thy word is a lamp unto my feet and a light unto my path", "Rest in the LORD, and wait patiently for him: fret not thyself because of him who prospereth in his way, because of the man who bringeth wicked devices to pass." };
+        string verse = bibleManager.GetVerse(book, chapter, verseNum);
         // number of blanks, index for verse from array of all verses..., reference to array with all verses, preconcieved verseAndBank
-        SetupVerse(numberOfBlanks, 0, verses, publicUseVerseAndBank);
+        SetupVerse(numberOfBlanks, 0, verse, publicUseVerseAndBank);
         Debug.Log($"[{string.Join(", ", publicUseVerseAndBank.verseAndBlanks)}]");
         Debug.Log($"[{string.Join(", ", publicUseVerseAndBank.wordBank)}]");
         Debug.Log($"[{string.Join(", ", publicUseVerseAndBank.indexOrders)}]");

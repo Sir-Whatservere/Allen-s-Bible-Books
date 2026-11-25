@@ -845,6 +845,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176288965}
   m_CullTransparentMesh: 1
+--- !u!1 &1203667222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1203667224}
+  - component: {fileID: 1203667223}
+  m_Layer: 0
+  m_Name: BibleManagerObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1203667223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203667222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c453a162baf7cfb4f81527f80dbdc166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1203667224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203667222}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 183.84837, y: 332.4312, z: -0.787273}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1348019003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,7 +1300,7 @@ MonoBehaviour:
       - m_Target: {fileID: 19079520}
         m_TargetAssemblyTypeName: instantiatorScript, Assembly-CSharp
         m_MethodName: setUpLearnVerses
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1484,6 +1528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7ad63eb32fee648a39faf4b652db50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bibleManager: {fileID: 1203667223}
 --- !u!224 &1987295309
 RectTransform:
   m_ObjectHideFlags: 0
