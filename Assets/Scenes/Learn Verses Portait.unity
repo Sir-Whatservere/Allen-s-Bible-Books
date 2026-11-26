@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 20
   m_Viewport: {fileID: 282660233}
   m_HorizontalScrollbar: {fileID: 1510319282}
   m_VerticalScrollbar: {fileID: 639824132}
@@ -810,7 +810,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Chapters
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -900,7 +900,7 @@ GameObject:
   - component: {fileID: 419814838}
   - component: {fileID: 419814837}
   m_Layer: 5
-  m_Name: Button
+  m_Name: chaptersButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -924,7 +924,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -241, y: 118}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &419814837
@@ -973,14 +973,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1688675116}
         m_TargetAssemblyTypeName: selectVerseScript, Assembly-CSharp
-        m_MethodName: addName
+        m_MethodName: createChaptersSelector
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Genesis
+          m_StringArgument: Titus
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &419814838
@@ -1214,8 +1214,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1894702247}
   m_HandleRect: {fileID: 1894702246}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.61
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2217,7 +2217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bibleManager: {fileID: 1203667223}
   chapterButtonPrefab: {fileID: 2192003047263749742, guid: 45a050231045f724d83a0ad1972cefab, type: 3}
-  containerTransform: {fileID: 43057177}
+  containerTransform: {fileID: 1797190676}
 --- !u!4 &1688675117
 Transform:
   m_ObjectHideFlags: 0
@@ -2280,6 +2280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1797190676}
   - component: {fileID: 1797190677}
+  - component: {fileID: 1797190678}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -2305,7 +2306,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 300}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1797190677
 MonoBehaviour:
@@ -2331,6 +2332,20 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1797190678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797190675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &1866804808
 GameObject:
   m_ObjectHideFlags: 0

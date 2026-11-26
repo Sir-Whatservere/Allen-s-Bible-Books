@@ -12,19 +12,18 @@ public class selectVerseScript : MonoBehaviour
     public Button chapterButtonPrefab;
     public Transform containerTransform;
 
-    public void addName(string bookName) {
+    public void createChaptersSelector(string bookName) {
         // load book file
         TextAsset jsonFile = Resources.Load<TextAsset>($"Bible/{bookName}");
         // get book data
         BibleManager.BookData bookData = JsonUtility.FromJson<BibleManager.BookData>(jsonFile.text);
-        for (int i = 1; i < bookData.chapters.Count; i++)
+        for (int i = 1; i < (bookData.chapters.Count + 1); i++)
         {
             // instantiate chapter button
-            CreateButton(i);
-           
+            CreateButton(bookName, i);
         }
     }
-    public void CreateButton(int chapterNumber)
+    public void CreateButton(string bookName,int chapterNumber)
     {
 
         Button newButton = Instantiate(chapterButtonPrefab, containerTransform);
@@ -32,10 +31,11 @@ public class selectVerseScript : MonoBehaviour
         TMP_Text buttonText = newButton.GetComponentInChildren<TMP_Text>();
         buttonText.text = chapterNumber.ToString();
 
-        newButton.onClick.AddListener(() => OnButtonClick(chapterNumber, newObject));
+        newButton.onClick.AddListener(() => OnButtonClick(chapterNumber, newObject, bookName));
     }
-    public void OnButtonClick(int chapterNumber, GameObject newObject)
+    public void OnButtonClick(int chapterNumber, GameObject newObject, string bookName)
     {
-       // do whole process for verses
+        Debug.Log(bookName + " Chapter " + chapterNumber + " button clicked!");
+        // do whole process for verses
     }
 }
