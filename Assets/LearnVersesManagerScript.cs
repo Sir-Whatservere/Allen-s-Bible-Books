@@ -9,6 +9,7 @@ public class LearnVersesManagerScript : MonoBehaviour
 {
     public BibleManager bibleManager;
     public verseAndBank publicUseVerseAndBank = new verseAndBank(null, null, null);
+    public string[] splitVerseToUse;
     public static verseAndBank SetupVerse(int numberOfBlanks, int verseIndex, String verse, verseAndBank verseAndBank_toReturn)
     {
         // split string into string[] of words
@@ -84,11 +85,12 @@ public class LearnVersesManagerScript : MonoBehaviour
             this.indexOrders = indexOrders;
         }
     }
-    public void runVersesLearner(int numberOfBlanks, string book, int chapter, int verseNum)
+    public void runVersesLearner(int numberOfBlanks, string verseFrom)
     {
-        string verse = bibleManager.GetVerse(book, chapter, verseNum);
+        splitVerseToUse = verseFrom.Split(" ");
+        //string verse = bibleManager.GetVerse(book, chapter, verseNum);
         // number of blanks, index for verse from array of all verses..., reference to array with all verses, preconcieved verseAndBank
-        SetupVerse(numberOfBlanks, 0, verse, publicUseVerseAndBank);
+        SetupVerse(numberOfBlanks, 0, verseFrom, publicUseVerseAndBank);
         Debug.Log($"[{string.Join(", ", publicUseVerseAndBank.verseAndBlanks)}]");
         Debug.Log($"[{string.Join(", ", publicUseVerseAndBank.wordBank)}]");
         Debug.Log($"[{string.Join(", ", publicUseVerseAndBank.indexOrders)}]");

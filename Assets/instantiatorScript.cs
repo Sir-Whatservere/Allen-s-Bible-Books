@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class instantiatorScript : MonoBehaviour
 {
+    // get what verse to use from selectVerseScript
+    public selectVerseScript selectedVerseObject;
+
+
     public Button buttonPrefab;
     public Transform containerTransform;
     public GameObject learnVersesManager;
@@ -51,6 +55,7 @@ public class instantiatorScript : MonoBehaviour
         }
         sortedIndexOrders = learnVersesManager.GetComponent<LearnVersesManagerScript>().publicUseVerseAndBank.indexOrders;
         Array.Sort(sortedIndexOrders);
+        Debug.Log($"Sorted Index Orders: [{string.Join(", ", sortedIndexOrders)}]");
     }
     public void setupMainVerseText()
     {
@@ -59,14 +64,25 @@ public class instantiatorScript : MonoBehaviour
         mainVerseAndBlanksText.text = textToUse;
     }
 
-    public void setUpLearnVerses()
+    public void setUpLearnVerses(int numberOfBlanks)
     {
         // find a way to assign these values from other input
-        int numberOfBlanks = 3;
-        string book = "Psalms";
-        int chapter = 37;
-        int verseNum = 7;
-        learnVersesManager.GetComponent<LearnVersesManagerScript>().runVersesLearner(numberOfBlanks, book, chapter, verseNum);
+        // int numberOfBlanks = 3;
+        //string book = selectedVerseObject.selectedBook;
+        //int chapter = selectedVerseObject.selectedChapter;
+        if(selectedVerseObject.selectedChapter == 0)
+        {
+            Debug.LogError("Selected chapter is 0. Please select a chapter first.");
+            return;
+        }
+        if (selectedVerseObject.selectedVerse == 0)
+        {
+            Debug.LogError("Selected verse is 0. Please select a verse first.");
+            return;
+        }
+        int verseNum = selectedVerseObject.selectedVerse;
+        string verse = selectedVerseObject.selectedChapterData.verses[verseNum - 1].text;
+        learnVersesManager.GetComponent<LearnVersesManagerScript>().runVersesLearner(numberOfBlanks, verse);
         setupWordBankButtons();
         setupMainVerseText();
     }
@@ -80,19 +96,24 @@ public class instantiatorScript : MonoBehaviour
         //Debug.Log("Word in spot -" + savedIndex + "- clicked!");
         if(savedIndex == sortedIndexOrders[nextIndexForSortedIndexArray])
         {
-            Debug.Log("Correct");
+            //Debug.Log("Correct");
             modifiableMainVerse[savedIndex] = learnVersesManager.GetComponent<LearnVersesManagerScript>().publicUseVerseAndBank.wordBank[wordBankIndex];
             mainVerseAndBlanksText.text = $"[{string.Join(", ", modifiableMainVerse)}]";
             nextIndexForSortedIndexArray++;
             Destroy(buttonClicked);
             //
         }
-        // else if saved
-        else if (learnVersesManager.GetComponent<LearnVersesManagerScript>().publicUseVerseAndBank.wordBank[wordBankIndex] == learnVersesManager.GetComponent<LearnVersesManagerScript>().publicUseVerseAndBank.wordBank[sortedIndexOrders[nextIndexForSortedIndexArray]])
+        // else if answertext = button text
+        /* sortedIndexOrders[nextIndexForSortedIndexArray] = the anwers index in the wordbank array
+         * we want wordBank[indexOrders[nextIndexForSortedIndexArray]]
+         * learnVersesManager.GetComponent<LearnVersesManagerScript>().splitVerseToUse
+          */
+        else if (learnVersesManager.GetComponent<LearnVersesManagerScript>().splitVerseToUse[sortedIndexOrders[nextIndexForSortedIndexArray]] == buttonClicked.GetComponentInChildren<TMP_Text>().text)
         {
             Debug.Log("Correct - same word, different position");
-            //Debug.Log(learnVersesManager.GetComponent<LearnVersesManagerScript>().publicUseVerseAndBank.wordBank[wordBankIndex] + " " + savedIndex);
-            //Debug.Log(learnVersesManager.GetComponent<LearnVersesManagerScript>().publicUseVerseAndBank.wordBank[sortedIndexOrders[nextIndexForSortedIndexArray]] + " " + sortedIndexOrders[nextIndexForSortedIndexArray]);
+            modifiableMainVerse[savedIndex] = learnVersesManager.GetComponent<LearnVersesManagerScript>().publicUseVerseAndBank.wordBank[wordBankIndex];
+            mainVerseAndBlanksText.text = $"[{string.Join(", ", modifiableMainVerse)}]";
+            nextIndexForSortedIndexArray++;
             Destroy(buttonClicked);
         }
         else
